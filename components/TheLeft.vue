@@ -24,15 +24,15 @@ export default {
     })
   },
   watch: {
-    entered (val) {
-      this.flash()
-      val ? this.enter() : this.leave()
+    entered (val) { // ステートの`entered`が切り替わるたび、この処理が実行される
+      this.flash() // アニメーション🔥
+      val ? this.enter() : this.leave() //'entered'の値によってアニメーションを書き分け🔥
     }
   },
-  methods: {
+  methods: { // アニメーションの宣言はここ
     flash () {
       requestAnimationFrame(() => {
-        TweenMax.to(this.$refs.title, 0.05, {
+        TweenMax.to(this.$refs.title, 0.05, { // `this.$refs`でDOMをにアクセス
           color: 'red',
           scale: 1.3,
           ease: Expo.easeIn,
@@ -41,7 +41,7 @@ export default {
         })
       })
     },
-    enter () {
+    enter () { // `entered`が`true`になった時発火
       requestAnimationFrame(() => {
         TweenMax.to(this.$refs.background, 1, {
           scaleX: 1,
@@ -49,7 +49,7 @@ export default {
         })
       })
     },
-    leave () {
+    leave () { // `entered`が`false`になったとき発火
       requestAnimationFrame(() => {
         TweenMax.to(this.$refs.background, 1, {
           scaleX: 0,
