@@ -69,7 +69,7 @@ export default {
       })
     },
     ...mapMutations({
-      click: 'click'
+      click: 'click' // `this.click()`にマッピングされます
     })
   }
 }
